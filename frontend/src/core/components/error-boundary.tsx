@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import { Button } from './button';
 
 interface Props {
   children?: ReactNode;
@@ -24,17 +25,9 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900">Something went wrong</h1>
-            <p className="mt-2 text-gray-600">Please refresh the page or try again later.</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-            >
-              Reload Page
-            </button>
-          </div>
+        <div className="flex h-screen w-full flex-col items-center justify-center gap-4">
+          <h1 className="text-2xl font-bold">Algo deu errado</h1>
+          <Button onClick={() => window.location.reload()}>Recarregar</Button>
         </div>
       );
     }
